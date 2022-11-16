@@ -1,8 +1,15 @@
-<!-- This icon is from <https://github.com/Templarian/MaterialDesign>, distributed under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0) license-->
+<script setup>
+import { ref } from "@vue/reactivity"
+import { watch } from "@vue/runtime-core"
+
+const storage = localStorage.productsToSell2022 || false
+const itemsQtd = ref(JSON.parse(storage).length || 0)
+</script>
+
 <template>
   <div class="bag-box">
     <img class="icon-bag" src="../../Image/icons8-sacola-de-compras-50.png" alt="" />
-    <span class="bag-counter">0</span>
+    <span class="bag-counter">{{ itemsQtd }}</span>
   </div>
 </template>
 

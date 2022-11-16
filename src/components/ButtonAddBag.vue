@@ -1,13 +1,9 @@
-<script setup></script>
+<script setup>
+const addOneOnBag = () => (document.querySelector(".bag-counter").innerText = Number(document.querySelector(".bag-counter").innerText) + 1)
+</script>
 
 <template>
-  <a
-    class="additionButton"
-    href="http://"
-    target="_blank"
-    rel="noopener noreferrer"
-    >ADICIONAR</a
-  >
+  <button class="additionButton" @click="addOneOnBag">ADICIONAR</button>
 </template>
 
 <style scoped>
@@ -17,5 +13,16 @@
   padding: 5px;
   border-radius: 5px;
   color: #ffffff;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+}
+.additionButton:hover {
+  background-color: #ffffff;
+  color: #141414;
+  border: 1px solid #141414;
+}
+
+.additionButton:active {
+  background-color: #81c784;
 }
 </style>

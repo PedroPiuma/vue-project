@@ -3,8 +3,6 @@ import KnowMore from "../components/KnowMore.vue"
 import Carousel from "../components/Carousel.vue"
 import ProductToSell from "../components/ProductToSell.vue"
 import FooterInfo from "../components/FooterInfo.vue"
-// import Chat from "../components/Chat.vue"
-// import GoTop from "../components/GoTop.vue"
 import KnowMoreItems from "../Resource/KnowMoreItems.js"
 import ProductsToSell from "../Resource/ProductsToSell.js"
 </script>
@@ -26,6 +24,7 @@ import ProductsToSell from "../Resource/ProductsToSell.js"
         :subtitle="product.subtitle"
         :price="product.price"
         :imageLink="product.imageLink"
+        :id="product.id"
       />
     </div>
   </div>

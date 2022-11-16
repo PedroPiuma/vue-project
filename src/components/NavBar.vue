@@ -6,10 +6,11 @@ import IconLogo from "./icons/IconLogo.vue"
 import IconProfile from "./icons/IconProfile.vue"
 import MenuModal from "./MenuModal.vue"
 import NavBarInfo from "./NavBarInfo.vue"
-import PopUp from "./PopUp.vue"
+import PopUp from "./PopUpSamePage.vue"
 import { ref } from "@vue/reactivity"
 const samePage = ref(false)
 const timer_miliseconds = 3000
+const pathname = window.location.pathname
 
 const onOpen = () => document.querySelector(".modal-hamburguer").classList.add("modal-hamburguer-active")
 const goTo = (path = "/") => {
@@ -27,14 +28,14 @@ const goTo = (path = "/") => {
   <div id="navBar">
     <IconHambuguerMenu v-on:click="onOpen" />
     <IconLogo @click="goTo()" />
-    <MenuModal />
+    <MenuModal :goTo="goTo" />
     <div>
       <IconSearch />
       <IconBag @click="goTo('/Cart')" />
-      <IconProfile />
+      <IconProfile @click="goTo('/Login')" />
     </div>
   </div>
-  <NavBarInfo />
+  <NavBarInfo v-if="pathname !== '/Login'" />
 </template>
 
 <style scoped>

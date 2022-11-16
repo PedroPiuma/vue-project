@@ -1,21 +1,57 @@
 <script setup>
+import { ref } from "@vue/reactivity"
+import { watch, watchEffect } from "@vue/runtime-core"
 import ButtonAddBag from "./ButtonAddBag.vue"
 import IconHearth from "./icons/IconHearth.vue"
-const props = defineProps(["imageLink", "title", "subtitle", "price"])
+import PopUpItemAction from "./PopUpItemAction.vue"
+const { imageLink, title, subtitle, price, id } = defineProps(["imageLink", "title", "subtitle", "price", "id"])
+
+const clicked = ref("")
+watch(clicked, () => setTimeout(() => (clicked.value = false), 3000))
+
+const addItemToCart = () => {
+  const storage = localStorage.productsToSell2022 || false
+  if (storage) {
+    const oldStorage = JSON.parse(storage)
+    const sameId = oldStorage.find((el) => el.id === id) || false
+
+    if (sameId) {
+      const newStorage = oldStorage.map((el) => {
+        el.qtd = el.id === id ? (el.qtd += 1) : el.qtd
+        return el
+      })
+      localStorage.setItem("productsToSell2022", JSON.stringify(newStorage))
+    } else if (!sameId) {
+      oldStorage.push({ id, imageLink, title, subtitle, price, qtd: 1 })
+      localStorage.setItem("productsToSell2022", JSON.stringify(oldStorage))
+    }
+  } else {
+    const data = [{ id, imageLink, title, subtitle, price, qtd: 1 }]
+    localStorage.setItem("productsToSell2022", JSON.stringify(data))
+  }
+}
 </script>
 
 <template>
+  <PopUpItemAction v-if="clicked" :item="title" :price="price" />
   <div class="product-sell-box">
     <div class="product-box">
       <IconHearth />
-      <img class="product" v-bind:src="props.imageLink" alt="" />
+      <img class="product" v-bind:src="imageLink" alt="" />
     </div>
     <div class="product-info">
-      <p class="product-info-title">{{ props.title }}</p>
-      <span class="product-info-subtitle">{{ props.subtitle }}</span>
+      <p class="product-info-title">{{ title }}</p>
+      <span class="product-info-subtitle">{{ subtitle }}</span>
       <div class="product-info-footer">
-        <span class="product-info-price">R$ {{ props.price }}</span>
-        <ButtonAddBag />
+        <span class="product-info-price">R$ {{ price }}</span>
+        <ButtonAddBag
+          @click="
+            () => {
+              addItemToCart()
+              clicked = true
+            }
+          "
+        />
       </div>
     </div>
   </div>

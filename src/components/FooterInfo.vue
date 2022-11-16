@@ -17,7 +17,7 @@
       <li>De 2ª a 6ª das 8h às 18h.</li>
       <li>contato@diadosaci.com.br</li>
     </ul>
-    <span class="line"></span>
+    <span class="line" style="margin-top: 40px"></span>
     <h3 class="footer-content-title">FORMAS DE PAGAMENTOS</h3>
     <h3 class="footer-content-title">COMPRE COM SEGURANÇA</h3>
   </div>

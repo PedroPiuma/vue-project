@@ -1,4 +1,6 @@
 <script setup>
+import IconCloser from "./icons/IconCloser.vue"
+const { goTo } = defineProps(["goTo"])
 const onClose = () => document.querySelector(".modal-hamburguer-active").classList.remove("modal-hamburguer-active")
 const openAccordion = () => {
   document.querySelector(".arrow").classList.toggle("arrow-active")
@@ -9,7 +11,7 @@ const openAccordion = () => {
 <template>
   <div class="modal-hamburguer">
     <div class="modal-hamburguer-links">
-      <a id="login" class="modal-list-item" href="http://" target="_blank" rel="noopener noreferrer">Login / Cadastra-se</a>
+      <span class="modal-list-item login" @click="goTo('/Login')">Login / Cadastra-se</span>
       <span class="modal-list-item accordion-menu" v-on:click="openAccordion">Produtos <span class="arrow"></span></span>
       <div class="accordion-content">
         <a class="modal-list-item accordion-modal-list-item" href="http://" target="_blank" rel="noopener noreferrer">Teste 1</a>
@@ -23,7 +25,7 @@ const openAccordion = () => {
       <a id="plusCategory" class="modal-list-item" href="http://" target="_blank" rel="noopener noreferrer">Mês das Crianças</a>
     </div>
     <div class="modal-hamburguer-closer-container">
-      <img class="modal-hamburguer-closer-container-btn" src="../Image/icons8-excluir-50.png" alt="" v-on:click="onClose" />
+      <IconCloser v-on:click="onClose" />
     </div>
   </div>
 </template>
@@ -52,7 +54,7 @@ const openAccordion = () => {
     max-width: 100%;
   }
 
-  #login,
+  .login,
   #plusCategory,
   .modal-hamburguer-closer-container,
   span.arrow {
@@ -93,12 +95,6 @@ const openAccordion = () => {
 .modal-hamburguer-closer-container {
   background-color: #202020;
   padding: 15px 20px;
-}
-
-.modal-hamburguer-closer-container-btn {
-  width: 27px;
-  height: 27px;
-  cursor: pointer;
 }
 
 .accordion-menu {

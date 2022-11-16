@@ -6,7 +6,10 @@ const page = () => {
       return "Home"
     case "/Cart":
       return "Lista de Compras"
+    case "/Login":
+      return "Login"
     default:
+      return "Default"
       break
   }
 }
@@ -49,6 +52,6 @@ const page = () => {
   font-size: 16px;
   animation: show ease-out;
   opacity: 0;
-  z-index: 1;
+  z-index: 4;
 }
 </style>

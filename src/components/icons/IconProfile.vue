@@ -1,4 +1,3 @@
-<!-- This icon is from <https://github.com/Templarian/MaterialDesign>, distributed under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0) license-->
 <template>
   <div class="icon-profile-box">
     <img class="icon-profile-img" src="../../Image/icons8-usuário-24.png" alt="" />
@@ -19,7 +18,7 @@
   border-radius: 100%;
 }
 
-.icon-profile-box:hover::after {
+/* .icon-profile-box:hover::after {
   position: absolute;
   content: "Entrar / Criar Conta";
   background-color: #ffffff;
@@ -30,5 +29,5 @@
   font-size: 12px;
   padding: 3px 20px;
   color: #666666;
-}
+} */
 </style>

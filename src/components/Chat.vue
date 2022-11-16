@@ -1,5 +1,5 @@
 <script setup>
-import ChatForm from "./Chat-Form.vue"
+import ChatForm from "./ChatForm.vue"
 const onOpenChat = () => {
   document.querySelector(".form-container").style.display = "block"
   document.querySelector(".chat-box").classList.add("chat-box-active")

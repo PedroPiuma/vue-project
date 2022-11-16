@@ -7,8 +7,9 @@ import Home from "./Routes/Home.vue"
 import Cart from "./Routes/Cart.vue"
 import NotFound from "./Routes/NotFound.vue"
 import { ref, computed } from "vue"
+import Login from "./Routes/Login.vue"
 
-const routes = { "/": Home, "/Cart": Cart }
+const routes = { "/": Home, "/Cart": Cart, "/Login": Login }
 const currentPath = ref(window.location.pathname)
 const currentView = computed(() => routes[currentPath.value] || NotFound)
 
